@@ -1,5 +1,4 @@
 const express = require('express');
-
 const http = require('http');
 const { Server } = require('socket.io');
 
@@ -7,6 +6,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
+// Serve static files
 app.use(express.static(__dirname));
 
 // Handle Socket.IO connections
@@ -24,7 +24,9 @@ io.on('connection', (socket) => {
     });
 });
 
-
+app.use("/",(req,res)=>{
+    res.sendFile(path.join(__dirname, "index.html"));
+})
 
 const PORT = 3000;
 server.listen(PORT, () => {
