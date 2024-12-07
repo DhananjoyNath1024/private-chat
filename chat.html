@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="chat-container">
+        <header class="chat-header">
+            <h2 id="username">Username</h2>
+            <!-- <button id="clear-button">Clear Messages</button> -->
+            <!-- <div id="status">
+                <span id="active-status">Online</span>
+                <span id="last-online" class="hidden"></span>
+            </div> -->
+        </header>
+
+        <div class="chat-messages">
+            <!-- Messages will be dynamically loaded here -->
+
+            <!-- <div class="message sent">
+                <p>My message</p>
+                <span class="timestamp">1:10 pm</span>
+            </div>
+            <div class="message received">
+                <p>Friend's message</p>
+                <span class="timestamp">1:10 pm</span>
+            </div> -->
+        </div>
+
+        <div>
+            <form action="" class="chat-input">
+            <input type="text" id="message-input" placeholder="Type a message" />
+            <button id="send-button">Send</button>
+        </form>
+        </div>
+    </div>
+
+    
+<script src="/socket.io/socket.io.js"></script>
+<script src="script.js"></script>
+<script src="active.js"></script>
+<script>
+    const username = localStorage.getItem('username');
+
+if (username) {
+    // Set the username to the opposite user
+    const displayedUsername = username === "Dhananjoy" ? "User2" : "Dhananjoy";
+    document.getElementById('username').textContent = displayedUsername;
+} else {
+    window.location.href = "index.html";  // Redirect back to login if no username
+}
+</script>
+</body>
+</html>
